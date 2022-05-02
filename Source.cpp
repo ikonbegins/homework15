@@ -7,6 +7,23 @@ Homework 15
 
 using namespace std;
 
+template<typename C>
+
+C half(C value)
+{
+    C chan;
+    chan = value / 2;
+
+    if (*typeid(value).name() == 'i') //rounding of the val while val is of int type
+    {
+        if (chan * 2 != value)
+        {
+            chan++;
+        }
+    }
+    return chan;
+}
+
 char character(char start, int offset)
 {
 	if (start < 'A' or (start > 'Z' and start < 'a') or start>'z')
@@ -25,13 +42,23 @@ char character(char start, int offset)
 
 int main()
 {
+
+    double a = 7.0;
+    float b = 5.0f;
+    int c = 3;
+
+    cout << half(a)<<endl;
+    cout << half(b)<<endl;
+    cout << half(c)<<endl;
+
+
     try 
     {
         char chara = character('a', 1);
         cout << chara << "\n";
         chara = character('a', -1);
         cout << chara << "\n";
-        chara = character('a\Z', -1);
+        chara = character('Z', -1);
         cout << chara << "\n";
         chara = character('?', 5);
         cout << chara << "\n";
